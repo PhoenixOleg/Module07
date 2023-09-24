@@ -6,6 +6,28 @@ namespace Module07
     {
         static void Main(string[] args)
         {
+            Address address = null;
+            try        
+            {
+                ///*Address*/ address = new Address("Street", "Building", "intercode", "floor", "appartment", "city", "state");
+                address = new Address("Солнечногорская ул", "24", "", "3", "15", "г. Москва", "Москва");
+                if (address != null)
+                {
+                    if (address.ZipCode == null)
+                    { address.ZipCode = "123456"; }
+                }
+                else
+                {
+                    Console.WriteLine("Не удалось задать адрес");
+                }
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine(address?.ZipCode);
+            Console.WriteLine(address?.Display());
 
             Console.ReadKey();
         }
