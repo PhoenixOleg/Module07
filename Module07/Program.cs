@@ -29,6 +29,19 @@ namespace Module07
             Console.WriteLine(address?.ZipCode);
             Console.WriteLine(address?.Display());
 
+            Contacts contacts = new Contacts();
+            try
+            {
+                contacts.Phone = "79161234567";
+                contacts.Email = "oleggmail.com";
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.WriteLine("Phone {0}, Email {1}", contacts?.Phone, contacts?.Email);
+
             Console.ReadKey();
         }
     }

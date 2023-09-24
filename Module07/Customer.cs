@@ -8,7 +8,8 @@ namespace Module07
 {
     abstract class Customer
     {
-
+        internal Address address;
+        internal Contacts contacts;
     }
 
     class Person : Customer 
@@ -16,7 +17,7 @@ namespace Module07
 
     }
 
-    class Organization : Customer 
+    class Company : Customer 
     {
 
     }
