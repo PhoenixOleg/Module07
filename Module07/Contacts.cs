@@ -51,7 +51,7 @@ namespace Module07
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value) != true && value.Contains("@") && value.Contains ("."))
+                if (string.IsNullOrWhiteSpace(value) != true && value.Contains("@") && value.Contains("."))
                 {
                     email = value;
                 }

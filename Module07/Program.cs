@@ -6,45 +6,12 @@ namespace Module07
     {
         static void Main(string[] args)
         {
-            Address address = null;
-            try        
-            {
-                ///*Address*/ address = new Address("Street", "Building", "intercode", "floor", "appartment", "city", "state");
-                address = new Address("Солнечногорская ул", "24", "", "3", "15", "г. Москва", "Москва");
-                if (address != null)
-                {
-                    if (address.ZipCode == null)
-                    { address.ZipCode = "123456"; }
-                }
-                else
-                {
-                    Console.WriteLine("Не удалось задать адрес");
-                }
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-            }
 
-            Console.WriteLine(address?.ZipCode);
-            Console.WriteLine(address?.Display());
-
-            Contacts contacts = new Contacts();
-            try
-            {
-                contacts.Phone = "79161234567";
-                contacts.Email = "oleggmail.com";
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-            Console.WriteLine("Phone {0}, Email {1}", contacts?.Phone, contacts?.Email);
-
+            Test.DoTest();
             Console.ReadKey();
         }
     }
+
 
     /// <summary>
     /// Абстрактный класс доставки "вообще". Базовый для всех видов доставок
