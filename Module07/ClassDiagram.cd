@@ -1,26 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Module07.Customer">
-    <Position X="1.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAQAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Customer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Module07.Person">
-    <Position X="3" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAQAAAAAAAAAAAEAAEAAAAAAAECAAAAAA=</HashCode>
-      <FileName>Customer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Module07.Company">
-    <Position X="0.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Customer.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Module07.Contacts">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -35,18 +14,53 @@
       <FileName>Address.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Module07.Products">
+  <Class Name="Module07.Product">
     <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAACAAAAAAAAAAAAAAAgABEABCgAAAACAQAAgA=</HashCode>
-      <FileName>Products.cs</FileName>
+      <HashCode>AAABAAAACAAAAAAAAAAAAAAAAABEABCgAAAAAAQAAAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Customer" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAQAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Person">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAQAAAAAAAAAAAEAAEAAAAAAAECAAAAAA=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Company">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Basket">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAEAAAAAAAAAAgAAAAAAEAAAABABAAAA=</HashCode>
+      <FileName>Basket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Warehouse">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAABAAQAAAAEAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Warehouse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Module07.Category" Collapsed="true">
     <Position X="7.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Products.cs</FileName>
+      <FileName>Product.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
