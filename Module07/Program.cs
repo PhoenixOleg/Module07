@@ -44,6 +44,7 @@ namespace Module07
 
             Console.WriteLine("\nВ Вашей корзине находятся товары:");
             basket.ShowItems();
+            Console.WriteLine("Сумма заказа {0}", basket.GetSum());
             #endregion 
 
             //Проверка очистки корзины

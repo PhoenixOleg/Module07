@@ -62,16 +62,16 @@ namespace Module07
                 Console.WriteLine("Ваша корзина пуста!");
             }
             else
-            { 
-            int idx = 0;
-            foreach (Product item in products)
             {
-                if (item != null)
+                int idx = 0;
+                foreach (Product item in products)
                 {
-                    idx++;
-                    Console.WriteLine($"{idx}. {item.vendorName} {item.name} (Артикул {item.article}). Цена {item.price}. Доступное количество {item.quantity}.");
+                    if (item != null)
+                    {
+                        idx++;
+                        Console.WriteLine($"{idx}. {item.vendorName} {item.name} (Артикул {item.article}). Цена {item.price}. Количество {item.quantity}.");
+                    }
                 }
-            }
             }
         }
 
@@ -79,6 +79,26 @@ namespace Module07
         {
             products.Clear();
             Console.WriteLine("Корзина очищена");
+        }
+
+        public decimal GetSum()
+        {
+            Decimal sum = 0.00m;
+            if (products.Count == 0)
+            {
+                return sum;
+            }
+            else
+            {
+                foreach (Product item in products)
+                {
+                    if (item != null)
+                    {
+                        sum = sum + decimal.Multiply(item.price, (decimal)item.quantity); //Это был сюрприз с оператором *
+                    }
+                }
+                return sum;
+            }
         }
     }
 }
