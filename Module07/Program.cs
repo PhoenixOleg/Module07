@@ -19,9 +19,9 @@ namespace Module07
             {
                 ErrorReaction(e.Message);
             }
-            #endregion 
+            #endregion
 
-            //warehouse.Show(2);
+            #region Заполнение корзины
             Console.WriteLine("В нашем магазине Вы можете купить:");
             warehouse.ShowCatalog();
 
@@ -30,18 +30,30 @@ namespace Module07
             Console.WriteLine("\nВ Вашей корзине находятся товары:");
             basket.ShowItems();
 
-            basket.AddItem(warehouse[1]);
-            basket.AddItem(warehouse[2]);
+            basket.AddItem(warehouse.GetClone(warehouse[1]), 10); //basket.AddItem(warehouse[2], 2); - так копируется ссылка на объект в куче и изменение количества идет никак
+            Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+            warehouse.ShowCatalog();
+
+            basket.AddItem(warehouse.GetClone(warehouse[1]), 3); //basket.AddItem(warehouse[2], 2); - так копируется ссылка на объект в куче и изменение количества идет никак
+            Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+            warehouse.ShowCatalog();
+
+            basket.AddItem(warehouse.GetClone(warehouse[2]), 2);
+            Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+            warehouse.ShowCatalog();
 
             Console.WriteLine("\nВ Вашей корзине находятся товары:");
             basket.ShowItems();
+            #endregion 
 
-            basket.Clear();
-            Console.WriteLine("\nВ Вашей корзине находятся товары:");
-            basket.ShowItems();
+            //Проверка очистки корзины
+            //basket.Clear();
+            //Console.WriteLine("\nВ Вашей корзине находятся товары:");
+            //basket.ShowItems();
 
-            Console.WriteLine();
-            Console.WriteLine(basket.GetItem(1)?.name);
+            //Проверка на несушествуюший товар и null
+            //Console.WriteLine();
+            //Console.WriteLine(basket.GetItem(1)?.name);
 
             //Test.DoTest();
             Console.ReadKey();

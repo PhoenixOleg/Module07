@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace Module07
 {
-    enum Category
-    {
-
-    }
-
     /// <summary>
     /// Класс товаров
     /// </summary>
@@ -34,55 +29,6 @@ namespace Module07
             price = Price;
             quantity = Quantity;
             weight = Weight;
-        }
-
-        /// <summary>
-        /// Выбор ID вендора из БД
-        /// </summary>
-        /// <param name="VendorName">Имя вендора</param>
-        /// <returns></returns>
-        static internal int GetVendorIDByName(in string VendorName)
-        {
-            //Заглушка
-            switch (VendorName.ToUpper())
-            {
-                case "IBM":
-                    return 0;
-                case "HP":
-                    return 1;
-                case "DELL":
-                    return 2;
-                case "MIKROTIK":
-                    return 3;
-                case "CISCO":
-                    return 4;
-                case "SUPERMICRO":
-                    return 5;
-                default:
-                    return -1;
-            }
-        }
-
-        static private string GetVendorNameByID(int ID)
-        {
-            //Заглушка
-            switch (ID)
-            {
-                case 0:
-                    return "IBM";
-                case 1:
-                    return "HP";
-                case 2:
-                    return "DELL";
-                case 3:
-                    return "MikroTik";
-                case 4:
-                    return "Cisco";
-                case 5:
-                    return "SuperMicro";
-                default:
-                   return "NOTFound";
-            }
         }
     }
 }

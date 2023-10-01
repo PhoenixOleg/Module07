@@ -17,7 +17,7 @@
   <Class Name="Module07.Product">
     <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAACAAAAAAAAAAAAAAAAABEABCgAAAAAAQAAAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAEABCgAAAAAAQAAAA=</HashCode>
       <FileName>Product.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,16 +52,9 @@
   <Class Name="Module07.Warehouse">
     <Position X="9.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAACAABAAQAAAAEAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>CAAAAAAAAAAQAAAACAABAAQAAAAEAAAAAAAABAAAAAA=</HashCode>
       <FileName>Warehouse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Module07.Category" Collapsed="true">
-    <Position X="7.25" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Product.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

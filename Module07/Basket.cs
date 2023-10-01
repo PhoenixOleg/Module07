@@ -11,12 +11,23 @@ namespace Module07
     {
         //Так как Корзина это мини-склад, сначала планировал наследовать его от Warehouse
         //Но тут вспомнил, что списки я использую в VB.Net и более-менее работать с ними умею.
-        //И список дает нужную мне гибкость. ПЕределывать на список склад не стал. Пока не придумал где еще индексатор прикрутить
+        //И список дает нужную мне гибкость. Переделывать на список склад не стал. Пока не придумал где еще индексатор прикрутить
         ArrayList products = new ArrayList();
 
-        public void AddItem(Product product)
-        { 
-            products.Add(product);
+        public void AddItem(Product product, double Quantity)
+        {
+            Console.WriteLine($"Пробуем положить в корзину {product.vendorName} {product.name} в количестве {Quantity}...");
+            if (product.quantity >= Quantity)
+            {
+                product.quantity = Quantity;
+                Warehouse.ChangeQuantity(product.article, -Quantity);
+                products.Add(product);
+                Console.WriteLine("Товар добавлен!");
+            }
+            else
+            {
+                Console.WriteLine($"Сожалеем, но столько товара {product.vendorName} {product.name} у нас нет. В данный момент можем предложить только {product.quantity}");
+            }
         }
 
         public Product GetItem(int id)
@@ -32,7 +43,7 @@ namespace Module07
             }
         }
         
-        public void RemoveItem(int id) 
+        public void RemoveItem(int id) //@@@ доработать возврат
         {
             if (id >= 0 && id < products.Count)
             {
@@ -64,9 +75,10 @@ namespace Module07
             }
         }
 
-        public void Clear()
+        public void Clear() //@@@ доработать возврат
         {
             products.Clear();
+            Console.WriteLine("Корзина очищена");
         }
     }
 }

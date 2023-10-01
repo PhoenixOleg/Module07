@@ -16,7 +16,7 @@ namespace Module07
 
         //Здесь по логике лучше применить коллекцию, но я их пока не знаю. 
         //Чтобы показать работу с индексатором и статическим полем сделал массив. Это ограничивает гибкость склада      
-        public Product[] products;
+        static public Product[] products;
 
         public Warehouse(int CountOfPlace)
         {
@@ -28,6 +28,7 @@ namespace Module07
         {
             get
             {
+                //@@@ В идеале тут еще надо проверку на добавление имеющегося уже товара по его артикулу
                 if (index >= 0 && index < products.Length)
                 {
                     return products[index];
@@ -74,11 +75,27 @@ namespace Module07
             int idx = 0;
             foreach (var item in products)
             {
-                if (item != null) {
+                if (item != null && item.quantity > 0) {
                     idx++;
                     Console.WriteLine($"{idx}. {item.vendorName} {item.name} (Артикул {item.article}). Цена {item.price}. Доступное количество {item.quantity}.");
                 }
             }
+        }
+
+        static internal void ChangeQuantity(string Article, double Quantity)
+        { 
+            for (int i = 0; i < products.Length; i++)
+            {
+                if (products[i] != null && products[i].article == Article) 
+                {
+                    products[i].quantity += Quantity;
+                }
+            }
+        }
+
+        internal Product GetClone (Product item)
+        {
+            return new Product(item.name, item.vendorName, item.article, item.price, item.quantity, item.weight);
         }
     }
 }
