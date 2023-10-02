@@ -62,6 +62,14 @@ namespace Module07
             Courier courier = new Courier("Иванов", "Иван", "Иванович");
             Console.WriteLine(courier.DisplayName());
 
+            //Contacts contacts = new Contacts();
+
+            //HomeDelivery homeDelivery = new HomeDelivery(courier, DateTime.Now.AddDays(1));
+            //homeDelivery.Sending();
+
+            PickPointDelivery shopDelivery = new ShopDelivery(DateTime.Now.AddDays(1));
+            shopDelivery.Sending();
+
             Console.ReadKey();
         }
         
