@@ -34,7 +34,7 @@ namespace Module07
             Console.WriteLine("\nВ нашем магазине Вы можете купить:");
             warehouse.ShowCatalog();
 
-            basket.AddItem(warehouse.GetClone(warehouse[1]), 3); //basket.AddItem(warehouse[2], 2); - так копируется ссылка на объект в куче и изменение количества идет никак
+            basket.AddItem(warehouse.GetClone(warehouse[1]), 3);
             Console.WriteLine("\nВ нашем магазине Вы можете купить:");
             warehouse.ShowCatalog();
 
@@ -71,38 +71,7 @@ namespace Module07
 
 
 
-    /// <summary>
-    /// Абстрактный класс доставки "вообще". Базовый для всех видов доставок
-    /// </summary>
-    abstract class Delivery
-    {
-        public string Address;
-    }
 
-    /// <summary>
-    /// Доставка на дом. Наследуется от Delivery
-    /// </summary>
-    class HomeDelivery : Delivery
-
-    {
-        /* ... */
-    }
-
-    /// <summary>
-    /// Доставка в пункт выдачи (самовывоз типа 1). Наследуется от Delivery
-    /// </summary>
-    class PickPointDelivery : Delivery
-    {
-        /* ... */
-    }
-
-    /// <summary>
-    /// Доставка в маазин (самовывоз типа 2). Наследуется от Delivery
-    /// </summary>
-    class ShopDelivery : Delivery
-    {
-        /* ... */
-    }
 
     /// <summary>
     /// Класс заказа
