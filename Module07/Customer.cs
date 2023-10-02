@@ -58,7 +58,7 @@ namespace Module07
         /// <param name="middleName">Отчество</param>
         /// <param name="lastName">Фамилия</param>
         /// <param name="age">Возраст</param>
-        internal Person(string name, string middleName, string lastName, string age) : this (name, middleName, lastName) //чтобы избежать пвтора кода
+        internal Person(string name, string middleName, string lastName, string age) : this (name, middleName, lastName) //чтобы избежать повтора кода
         {
             if (Int32.TryParse(age, out int result) && result >= 18)
             {
@@ -96,5 +96,10 @@ namespace Module07
                 throw new ArgumentException("Название компании не может быть пустыми");
             }
         }
+    }
+
+    class Courier : Person
+    {
+        internal Courier(string name, string middleName, string lastName) : base (name, middleName, lastName) { }
     }
 }

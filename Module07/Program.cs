@@ -57,6 +57,11 @@ namespace Module07
             //Console.WriteLine(basket.GetItem(1)?.name);
 
             //Test.DoTest();
+
+            //Тест создания курьера
+            Courier courier = new Courier("Иванов", "Иван", "Иванович");
+            Console.WriteLine(courier.DisplayName());
+
             Console.ReadKey();
         }
         
