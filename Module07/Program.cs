@@ -146,14 +146,14 @@ namespace Module07
                 order.basket.ShowItems();
                 Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
 
-                order.basket.Clear();
-                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
-                warehouse.ShowCatalog();
-                Console.WriteLine("");
-                //Проверяем корзину
-                Console.WriteLine("\nВ Вашей корзине находятся товары:");
-                order.basket.ShowItems();
-                Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
+                //order.basket.Clear();
+                //Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                //warehouse.ShowCatalog();
+                //Console.WriteLine("");
+                ////Проверяем корзину
+                //Console.WriteLine("\nВ Вашей корзине находятся товары:");
+                //order.basket.ShowItems();
+                //Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
 
                 #endregion
 
@@ -173,6 +173,7 @@ namespace Module07
                 ErrorReaction(e.Message, e.HResult);
             }
 
+            Console.WriteLine("\nНажмите любую клавишу для выхода");
             Console.ReadKey();
 
 

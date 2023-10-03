@@ -14,13 +14,12 @@ namespace Module07
     abstract class Delivery
     {
         public DateTime DeliveryDate; //Дата доставки
-        internal string waitInterval; //Время ожидания получения товара (жизни заказа)
-
         internal string address; //Адрес получения (доставки) товара
 
-        public abstract string WaitInterval {get;}
-        
+        protected string waitInterval; //Время ожидания получения товара (жизни заказа)
+
         internal abstract void ShowSendingResume();
+        protected abstract string WaitInterval { get; }
 
         public virtual string Address 
         {
@@ -58,7 +57,7 @@ namespace Module07
             waitInterval = "15 минут";
         }
 
-        public override string WaitInterval
+        protected override string WaitInterval
         {
             get
             {
@@ -85,7 +84,7 @@ namespace Module07
             waitInterval = "3 дней";
         }
 
-        public override string WaitInterval
+        protected override string WaitInterval
         {
             get
             {

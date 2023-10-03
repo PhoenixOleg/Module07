@@ -16,7 +16,7 @@ namespace Module07
 
         //Здесь по логике лучше применить коллекцию, но я их пока не знаю. 
         //Чтобы показать работу с индексатором и статическим полем сделал массив. Это ограничивает гибкость склада      
-        static public Product[] products;
+        static private Product[] products;
 
         public Warehouse(int CountOfPlace)
         {

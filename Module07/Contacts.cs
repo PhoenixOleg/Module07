@@ -9,8 +9,8 @@ namespace Module07
 {
     class Contacts
     {
-        string phone;
-        string email;
+        private string phone;
+        private string email;
 
         /// <summary>
         /// Свойство номер телефона

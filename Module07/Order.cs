@@ -13,13 +13,13 @@ namespace Module07
     /// <typeparam name="TStruct">Входной обобщенный (универсальный) параметр структуры заказа. Ничем не огранивается. Возможно, далее сделаю ограничение struct или конкретной структурой</typeparam>
     class Order<TDelivery, TCustomer> where TDelivery : Delivery where TCustomer : Customer
     {
-        public TDelivery Delivery; //Поле доставки
-        public TCustomer Customer; //Поле заказчика
+        internal TDelivery Delivery; //Поле доставки
+        internal TCustomer Customer; //Поле заказчика
 
-        public int Number; //Поле номера заказа
-        public string Remark; //Поле описания заказа
+        internal int Number; //Поле номера заказа
+        internal string Remark; //Поле описания заказа
 
-        public Basket basket;
+        internal Basket basket;
 
 
         public Order(TDelivery delivery, TCustomer customer, int number, string description)

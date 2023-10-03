@@ -12,14 +12,14 @@ namespace Module07
     
     class Address
     {
-        string street; //улица
-        string building; //номер дома/владения (в идеале надо прописывать и поле для корпуса/строения. иначе в реальном проекте с БД нарушается нормализация таблицы)
-        string intercomCode; //код домофона
-        string floor; //Этаж
-        string apartment; //квартира / номер офиса
-        string city; //город, населенный пункт
-        string state; //регион. мск, область, например
-        string zipCode; //почтовый индекс
+        private string street; //улица
+        private string building; //номер дома/владения (в идеале надо прописывать и поле для корпуса/строения. иначе в реальном проекте с БД нарушается нормализация таблицы)
+        private string intercomCode; //код домофона
+        private string floor; //Этаж
+        private string apartment; //квартира / номер офиса
+        private string city; //город, населенный пункт
+        private string state; //регион. мск, область, например
+        private string zipCode; //почтовый индекс
 
         public string ZipCode
         {

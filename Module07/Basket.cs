@@ -12,7 +12,7 @@ namespace Module07
         //Так как Корзина это мини-склад, сначала планировал наследовать его от Warehouse
         //Но тут вспомнил, что списки я использую в VB.Net и более-менее работать с ними умею.
         //И список дает нужную мне гибкость. Переделывать на список склад не стал. Т. к. не придумал где еще индексатор прикрутить
-        ArrayList products = new ArrayList();
+        private ArrayList products = new ArrayList();
 
         public void AddItem(Product product, double Quantity)
         {

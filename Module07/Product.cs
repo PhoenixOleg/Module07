@@ -11,9 +11,7 @@ namespace Module07
     /// </summary>
     class Product
     {
-        //private int id; //ID товара в БД
         internal string name; //Название товара
-        //internal int idVendor; //ID производителя товара
         internal string vendorName; //Название производителя
         internal string article; //Артикул товара по проиводителю. Если отсутствует просваиваем свой внутренний
         internal decimal price; //Цена за единицу товара (штуку/веса)
