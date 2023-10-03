@@ -101,13 +101,13 @@ namespace Module07
                 warehouse.ShowCatalog();
                 Console.WriteLine("");
 
-                //Добавляем товар A
+                //Добавляем товар idx=1 (второй)
                 order.basket.AddItem(warehouse.GetClone(warehouse[1]), 3);
                 Console.WriteLine("\nВ нашем магазине Вы можете купить:");
                 warehouse.ShowCatalog();
                 Console.WriteLine("");
 
-                //Добавляем товар B
+                //Добавляем товар idx=2 (третий)
                 order.basket.AddItem(warehouse.GetClone(warehouse[2]), 2);
                 Console.WriteLine("\nВ нашем магазине Вы можете купить:");
                 warehouse.ShowCatalog();
@@ -117,6 +117,44 @@ namespace Module07
                 Console.WriteLine("\nВ Вашей корзине находятся товары:");
                 order.basket.ShowItems();
                 Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
+
+                //Удаляем товар idx=2 (третий). В корзине он второй
+                order.basket.RemoveItem(1);
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
+
+                //Проверяем корзину
+                Console.WriteLine("\nВ Вашей корзине находятся товары:");
+                order.basket.ShowItems();
+                Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
+
+                //Добавляем товар idx=0 (первый)
+                order.basket.AddItem(warehouse.GetClone(warehouse[0]), 7);
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
+
+                //Добавляем товар idx=2 (третий)
+                order.basket.AddItem(warehouse.GetClone(warehouse[2]), 1);
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
+
+                //Проверяем корзину
+                Console.WriteLine("\nВ Вашей корзине находятся товары:");
+                order.basket.ShowItems();
+                Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
+
+                order.basket.Clear();
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
+                //Проверяем корзину
+                Console.WriteLine("\nВ Вашей корзине находятся товары:");
+                order.basket.ShowItems();
+                Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
+
                 #endregion
 
                 #region "Выходные формы"

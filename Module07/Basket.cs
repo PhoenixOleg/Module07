@@ -11,12 +11,12 @@ namespace Module07
     {
         //Так как Корзина это мини-склад, сначала планировал наследовать его от Warehouse
         //Но тут вспомнил, что списки я использую в VB.Net и более-менее работать с ними умею.
-        //И список дает нужную мне гибкость. Переделывать на список склад не стал. Пока не придумал где еще индексатор прикрутить
+        //И список дает нужную мне гибкость. Переделывать на список склад не стал. Т. к. не придумал где еще индексатор прикрутить
         ArrayList products = new ArrayList();
 
         public void AddItem(Product product, double Quantity)
         {
-            Console.WriteLine($"Пробуем положить в корзину {product.vendorName} {product.name} в количестве {Quantity}...");
+            Console.WriteLine($"\nПробуем положить в корзину {product.vendorName} {product.name} в количестве {Quantity}...");
             if (product.quantity >= Quantity)
             {
                 product.quantity = Quantity;
@@ -43,11 +43,14 @@ namespace Module07
             }
         }
         
-        public void RemoveItem(int id) //@@@ доработать возврат
+        public void RemoveItem(int id)
         {
             if (id >= 0 && id < products.Count)
             {
-                products.Remove(id);
+                var item = (Product)products[id];
+                Console.WriteLine($"\nПробуем удалить из корзины {item.vendorName} {item.name} в количестве {item.quantity}...");
+                Warehouse.ChangeQuantity(item.article, + item.quantity); //Пишу +, чтоб не запутаться самому
+                products.RemoveAt(id);
             }
             else
             {
@@ -75,8 +78,12 @@ namespace Module07
             }
         }
 
-        public void Clear() //@@@ доработать возврат
+        public void Clear() 
         {
+            foreach (Product item in products) 
+            {
+                Warehouse.ChangeQuantity(item.article, +item.quantity); //Пишу +, чтоб не запутаться самому
+            }
             products.Clear();
             Console.WriteLine("Корзина очищена");
         }

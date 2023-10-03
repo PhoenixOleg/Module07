@@ -68,6 +68,7 @@ namespace Module07
 
         internal override void Sending() 
         {
+            //Нужна проверка на пустоту корзины
             Console.WriteLine($"Ваш заказ передан курьеру {courier?.GetName()} и будет доставлен по адресу {address}.\nОжидаемое время доставки {DeliveryDate:dd.MM.yyyy}. Обратите внимание, что курьер сможет ждать получения заказа не более {waitInterval}.\nСвязаться с курьером Вы можете по телефону {courier?.contacts?.Phone}") ;
         }
     }
