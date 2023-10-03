@@ -107,5 +107,11 @@ namespace Module07
                 return sum;
             }
         }
+
+        public int GetItemCount
+        {
+            get { return products.Count; }
+        }
+
     }
 }

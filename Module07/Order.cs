@@ -39,5 +39,17 @@ namespace Module07
         {
             Console.WriteLine(Delivery.Address);
         }
+
+        public void OrderSending()
+        {
+            if (basket.GetItemCount > 0)
+            {
+                Delivery.ShowSendingResume();
+            }
+            else
+            {
+                Console.WriteLine("Корзина пуста. Невозможно отправить заказ на выполнение");
+            }
+        }
     }
 }

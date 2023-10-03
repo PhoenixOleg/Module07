@@ -161,7 +161,7 @@ namespace Module07
                 Console.WriteLine("");
                 Console.WriteLine($"Уважаемый, {order.Customer.GetName()}. Проверьте Ваши контактные данные:\n\tТелефон - {order.Customer.contacts.Phone}\n\tЭл. почта - {order.Customer.contacts.Email}.");
                 Console.WriteLine("");
-                order.Delivery.Sending();
+                order.OrderSending();
 
                 Console.WriteLine($"\nИнформация для курьера.\nЗаказ N{order.Number} необходимо доставить по адресу {order.Delivery.address}. Дата вручения заказа клиенту - {order.Delivery.DeliveryDate:dd.MM.yyyy}." +
                     $"\nФИО клиента - {order.Customer.GetName()}\nДанные для связи с клиентом - {order.Customer.contacts.Phone}" +
