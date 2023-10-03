@@ -176,7 +176,7 @@ namespace Module07
             }
         }
 
-        internal string Display()
+        internal string GetAdressString()
         {
             return ZipCode + ", " + state + ", " + city + ", " + street + ", дом " + building + ", этаж " + (String.IsNullOrWhiteSpace(floor) ? "не указан" : floor) + ", кв. " + (String.IsNullOrWhiteSpace(apartment) ? "не указана" : apartment) + " (код домофона - " + (String.IsNullOrWhiteSpace(intercomCode) ? "не указан" : intercomCode) + ")";
         }

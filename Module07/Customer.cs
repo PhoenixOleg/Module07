@@ -17,7 +17,7 @@ namespace Module07
             name = Name;
         }
 
-        virtual internal string DisplayName()
+        virtual internal string GetName()
         {
             return name;
         }
@@ -70,12 +70,12 @@ namespace Module07
             }            
         }
 
-        internal override string DisplayName()
+        internal override string GetName()
         {
             return (name + " " + middleName + " " + lastName).Replace ("  ", " "); //Подавление второго пробела, если не указано отчество
         }
 
-        internal int DisplayAge()
+        internal int GetAge()
         {
             return age;
         }

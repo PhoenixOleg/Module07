@@ -3,12 +3,12 @@
   <Class Name="Module07.Contacts">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAgAAAAAAAAAAAAAAAgAAAAIAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAgAAAAAAAAAAAAAgAgAAAAIAAAAAA=</HashCode>
       <FileName>Contacts.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Module07.Address">
-    <Position X="5" Y="2.75" Width="1.5" />
+    <Position X="6" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAQoAAAAAAAAAAAAICRAAAAAAAgBFgAAAAAAAAAA=</HashCode>
       <FileName>Address.cs</FileName>
@@ -24,14 +24,14 @@
   <Class Name="Module07.Customer" Collapsed="true">
     <Position X="1.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAQAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAIEAAAAAAAAAAAABAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Module07.Person">
     <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAQAAAAAAAAAAAEAAEAAAAAAAECAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAABAQAAAAAAAAAAAEAAEAAAAAAAACAAABAA=</HashCode>
       <FileName>Customer.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -54,6 +54,41 @@
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAAQAAAACAABAAQAAAAEAAAAAAAABAAAAAA=</HashCode>
       <FileName>Warehouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Order&lt;TDelivery, TCustomer&gt;">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAgACAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAQg=</HashCode>
+      <FileName>Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.Delivery" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAACAAAAAgAAAAACAAAAQAAAAAA=</HashCode>
+      <FileName>Delivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.HomeDelivery" Collapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAIAAA=</HashCode>
+      <FileName>Delivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.PickPointDelivery" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Delivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Module07.ShopDelivery" Collapsed="true">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Delivery.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

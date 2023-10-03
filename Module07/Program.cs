@@ -5,11 +5,15 @@ namespace Module07
 {
     class Program
     {
+        enum DeliveryAdr 
+        { 
+        }
+
         static void Main(string[] args)
         {
             #region Заполняем магазин            
             Warehouse warehouse = new Warehouse(3);
-            try 
+            try
             {
                 warehouse[0] = new Product("RAM 16Gb", "HP", "A2Z52AA", 8500.00m, 60, 0.050);
                 warehouse[1] = new Product("HDD SAS 146Gb", "IBM", "40K1044", 10200.00m, 5, 0.7);
@@ -17,68 +21,132 @@ namespace Module07
             }
             catch (Exception e)
             {
-                ErrorReaction(e.Message);
+                ErrorReaction(e.Message, e.HResult);
+            }
+            Console.WriteLine("В нашем магазине Вы можете купить:");
+            warehouse.ShowCatalog();
+            #endregion
+
+            #region Создаем заказчика ФЛ с адресом и контактами
+            Address address = null;
+            try
+            {
+                address = new Address("Солнечногорская ул", "24", "", "3", "15", "г. Москва", "Москва"); //Адрес левый xD Любое совпадение является случайностью
+                if (address != null)
+                {
+                    if (address.ZipCode == null)
+                    {address.ZipCode = "123456"; }
+                }
+                else
+                {
+                    Console.WriteLine("Не удалось задать адрес");
+                }
+            }
+            catch (ArgumentException e)
+            {
+                ErrorReaction(e.Message, e.HResult);
+            }
+
+            Contacts contacts = new Contacts();
+            try
+            {
+                //Проверку на null не делаю, т. к. код в try и уйдет на обработчик 
+                contacts.Phone = "79161234567";
+                contacts.Email = "oleg@gmail.com";
+            }
+            catch (Exception e)
+            {
+                ErrorReaction(e.Message, e.HResult);
+            }
+
+            Person person = null;
+            try
+            {
+                person = new Person("Олег", "", "Королёв");
+                person.contacts = contacts;
+                person.address = address;
+            }
+            catch (Exception e)
+            {
+                ErrorReaction(e.Message, e.HResult);
             }
             #endregion
 
-            #region Заполнение корзины
-            Console.WriteLine("В нашем магазине Вы можете купить:");
-            warehouse.ShowCatalog();
+            
+            try
+            {
+                #region Создаем курьера и доставку на дом
+                Courier courier = new Courier("Иванов", "Иван", "Иванович");
+                courier.contacts = new Contacts("79876543210", "delivery@shop.com");
 
-            Basket basket = new Basket();
+                HomeDelivery homeDelivery = new HomeDelivery(courier, DateTime.Now.AddDays(1));
+                homeDelivery.Address = person.address.GetAdressString();
+                #endregion
 
-            Console.WriteLine("\nВ Вашей корзине находятся товары:");
-            basket.ShowItems();
+                #region Создаем заказ и корзину внутри него
+                int orderNum = 1; //Получили новый ID для запись в таблицу заказов в БД
+                string remark = "Просьба позвонить до прибытия за 10 минут"; //Пожелания к заказу (для курьера, сборщика и т. п.)
+                Order<HomeDelivery, Customer> order = new Order<HomeDelivery, Customer>(homeDelivery, person, orderNum, remark);
+                #endregion 
 
-            basket.AddItem(warehouse.GetClone(warehouse[1]), 10); //basket.AddItem(warehouse[2], 2); - так копируется ссылка на объект в куче и изменение количества идет никак
-            Console.WriteLine("\nВ нашем магазине Вы можете купить:");
-            warehouse.ShowCatalog();
+                #region Заполнение корзины
+                //Убеждаемся что корзина пуста вначале
+                Console.WriteLine("\nВ Вашей корзине находятся товары:");
+                order.basket.ShowItems();
+                Console.WriteLine("");
 
-            basket.AddItem(warehouse.GetClone(warehouse[1]), 3);
-            Console.WriteLine("\nВ нашем магазине Вы можете купить:");
-            warehouse.ShowCatalog();
+                //Попытка добавить товар в слишком большом количестве
+                order.basket.AddItem(warehouse.GetClone(warehouse[1]), 10); //basket.AddItem(warehouse[2], 2); - так копируется ссылка на объект в куче и изменение количества идет никак
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
 
-            basket.AddItem(warehouse.GetClone(warehouse[2]), 2);
-            Console.WriteLine("\nВ нашем магазине Вы можете купить:");
-            warehouse.ShowCatalog();
+                //Добавляем товар A
+                order.basket.AddItem(warehouse.GetClone(warehouse[1]), 3);
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
 
-            Console.WriteLine("\nВ Вашей корзине находятся товары:");
-            basket.ShowItems();
-            Console.WriteLine("Сумма заказа {0}", basket.GetSum());
-            #endregion 
+                //Добавляем товар B
+                order.basket.AddItem(warehouse.GetClone(warehouse[2]), 2);
+                Console.WriteLine("\nВ нашем магазине Вы можете купить:");
+                warehouse.ShowCatalog();
+                Console.WriteLine("");
 
-            //Проверка очистки корзины
-            //basket.Clear();
-            //Console.WriteLine("\nВ Вашей корзине находятся товары:");
-            //basket.ShowItems();
+                //Проверяем корзину
+                Console.WriteLine("\nВ Вашей корзине находятся товары:");
+                order.basket.ShowItems();
+                Console.WriteLine("Сумма заказа {0}", order.basket.GetSum());
+                #endregion
 
-            //Проверка на несушествуюший товар и null
-            //Console.WriteLine();
-            //Console.WriteLine(basket.GetItem(1)?.name);
+                #region "Выходные формы"
+                Console.WriteLine("");
+                Console.WriteLine($"Уважаемый, {order.Customer.GetName()}. Проверьте Ваши контактные данные:\n\tТелефон - {order.Customer.contacts.Phone}\n\tЭл. почта - {order.Customer.contacts.Email}.");
+                Console.WriteLine("");
+                order.Delivery.Sending();
 
-            //Test.DoTest();
-
-            //Тест создания курьера
-            Courier courier = new Courier("Иванов", "Иван", "Иванович");
-            Console.WriteLine(courier.DisplayName());
-
-            //Contacts contacts = new Contacts();
-
-            //HomeDelivery homeDelivery = new HomeDelivery(courier, DateTime.Now.AddDays(1));
-            //homeDelivery.Sending();
-
-            PickPointDelivery shopDelivery = new ShopDelivery(DateTime.Now.AddDays(1));
-            shopDelivery.Sending();
+                Console.WriteLine($"\nИнформация для курьера.\nЗаказ N{order.Number} необходимо доставить по адресу {order.Delivery.address}. Дата вручения заказа клиенту - {order.Delivery.DeliveryDate:dd.MM.yyyy}." +
+                    $"\nФИО клиента - {order.Customer.GetName()}\nДанные для связи с клиентом - {order.Customer.contacts.Phone}" +
+                    $"\nНеобходимо выполнить пожелание клиента - {order.Remark}");
+                #endregion 
+            }
+            catch (Exception e)
+            {
+                ErrorReaction(e.Message, e.HResult);
+            }
 
             Console.ReadKey();
+
+
+
         }
-        
-        static void ErrorReaction(string msg)
+
+        static void ErrorReaction(string msg, int exitCode)
         {
             Console.WriteLine(msg);
             Console.WriteLine("Выполнение программы будет завершено");
             Console.ReadKey();
-            System.Environment.Exit(0);
+            System.Environment.Exit(exitCode);
         }
     }
 
@@ -86,27 +154,5 @@ namespace Module07
 
 
 
-    /// <summary>
-    /// Класс заказа
-    /// </summary>
-    /// <typeparam name="TDelivery">Входной обобщенный (универсальный) параметр вида доставки. Ограничивается абстрактным классом Delivery</typeparam>
-    /// <typeparam name="TStruct">Входной обобщенный (универсальный) параметр структуры заказа. Ничем не огранивается. Возможно, далее сделаю ограничение struct или конкретной структурой</typeparam>
-    class Order<TDelivery, TStruct> where TDelivery : Delivery
-    {
-        public TDelivery Delivery; //Поле доставки
 
-        public int Number; //Поле номера заказа
-
-        public string Description; //Поле описания заказа
-
-        /// <summary>
-        /// Метод отображения адреса доставки (получения) заказа
-        /// </summary>
-        public void DisplayAddress()
-        {
-            Console.WriteLine(Delivery.Address);
-        }
-
-        // ... Другие поля
-    }
 }
