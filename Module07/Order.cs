@@ -39,7 +39,5 @@ namespace Module07
         {
             Console.WriteLine(Delivery.Address);
         }
-
-        // ... Другие поля
     }
 }
