@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading.Tasks.Dataflow;
 
 namespace Module07
 {
@@ -32,7 +33,7 @@ namespace Module07
 
         public Product GetItem(int id)
         {
-            if(id >= 0 && id < products.Count)
+            if (id >= 0 && id < products.Count)
             {
                 return (Product)products[id];
             }
@@ -42,14 +43,14 @@ namespace Module07
                 return null;
             }
         }
-        
+
         public void RemoveItem(int id)
         {
             if (id >= 0 && id < products.Count)
             {
                 var item = (Product)products[id];
                 Console.WriteLine($"\nПробуем удалить из корзины {item.vendorName} {item.name} в количестве {item.quantity}...");
-                Warehouse.ChangeQuantity(item.article, + item.quantity); //Пишу +, чтоб не запутаться самому
+                Warehouse.ChangeQuantity(item.article, +item.quantity); //Пишу +, чтоб не запутаться самому
                 products.RemoveAt(id);
             }
             else
@@ -78,9 +79,9 @@ namespace Module07
             }
         }
 
-        public void Clear() 
+        public void Clear()
         {
-            foreach (Product item in products) 
+            foreach (Product item in products)
             {
                 Warehouse.ChangeQuantity(item.article, +item.quantity); //Пишу +, чтоб не запутаться самому
             }
@@ -101,7 +102,18 @@ namespace Module07
                 {
                     if (item != null)
                     {
-                        sum = sum + decimal.Multiply(item.price, (decimal)item.quantity); //Это был сюрприз с оператором *
+                        /* Переопределю метод
+                         * sum = sum + decimal.Multiply(item.price, (decimal)item.quantity); //Это был сюрприз с оператором *
+                         */
+
+                        try 
+                        { 
+                            sum = sum + DecimalExtension.Umnozhenie(item.price, item.quantity); 
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Ошибка при подсчете суммы заказа - {e.Message}");
+                        }                          
                     }
                 }
                 return sum;
@@ -112,6 +124,18 @@ namespace Module07
         {
             get { return products.Count; }
         }
-
+    }
+    public static class DecimalExtension
+    {
+        public static Decimal Umnozhenie(this decimal val1, object val2)
+        {
+            if (decimal.TryParse(val2.ToString(), out decimal tmp))
+            {
+                return val1 * tmp;
+            }
+            else
+            { throw new ArgumentException("Невозможно преобразовать значениев тип decimal"); }
+        }
     }
 }
+
